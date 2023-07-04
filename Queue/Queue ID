@@ -1,3 +1,18 @@
+Given (t) test cases, each one contains id and number (n).
+
+if id = 1, push number (n) to queue.
+
+else if id = 2 and queue is empty, print (no)
+
+else if id = 2 and queue is not empty, remove number from queue, and check if that number equal to the number (n) print (yes) else print (no).
+
+Input
+t (1≤t≤103
+) — the number of test cases. Description of each test follows.
+
+(1≤id≤2), (1≤n≤103). id, number(n).
+----------------------------------------------------------------------------------------------------
+
 #include <iostream>
 #include <queue>
 using namespace std;
