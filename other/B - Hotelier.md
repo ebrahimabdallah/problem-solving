@@ -39,122 +39,110 @@ LLRL1RL1
 
 
 ------------------------------------------------
-# sol 1
+# Solution 1 - Using a deque
+
 #include <iostream>
-#include<queue>
+#include <deque>
+
 using namespace std;
- 
+
 int main() {
-	deque<int>q(10, 0);
-	int n;
-	cin >> n;
-	while (n--)
-	{
-		char str;
-		cin >> str;
- 
- 
-		if (str == 'L')
- 
-		{
-			for (int i = 0; i < 10; i++)
-			{
- 
- 
-				if (q[i] == 0)
-				{
-					q[i] = 1;
- 
-					break;
-				}
-			}
-		}
-		else if (str == 'R') {
- 
-			for (int i = 9; i >= 0; i--)
-			{
-				if (q[i] == 0)
-				{
-					q[i] = 1;
- 
- 
-					break;
-				}
-			}
-		}
-		else
-		{
-			q[str - '0']=0;
- 
-		}
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		cout << q[i];
-	}
-	return 0;
+    deque<int> q(10, 0); // Initialize a deque of 10 elements with value 0
+    int n;
+    cin >> n;
+    while (n--) {
+        char str;
+        cin >> str;
+        if (str == 'L') {
+            // Find the first empty room from the left and assign it to the customer
+            for (int i = 0; i < 10; i++) {
+                if (q[i] == 0) {
+                    q[i] = 1;
+                    break;
+                }
+            }
+        } else if (str == 'R') {
+            // Find the first empty room from the right and assign it to the customer
+            for (int i = 9; i >= 0; i--) {
+                if (q[i] == 0) {
+                    q[i] = 1;
+                    break;
+                }
+            }
+        } else {
+            // Make the specified room empty
+            q[str - '0'] = 0;
+        }
+    }
+    // Output the final room assignment list
+    for (int i = 0; i < 10; i++) {
+        cout << q[i];
+    }
+    return 0;
 }
 -----------------------------------------
-# sol 2
+# Solution 2 - Using a string
+
 #include <iostream>
- 
 using namespace std;
- 
+
 int main() {
-    string ss, s = "0000000000";
+    string ss, s = "0000000000"; // Initialize a string of 10 zeros
     int n;
     cin >> n >> ss;
     for (int i = 0; i < n; i++) {
         if (ss[i] == 'L') {
+            // Find the first empty room from the left and assign it to the customer
             s[s.find_first_of('0')] = '1';
-        }
-        else if (ss[i] == 'R') {
+        } else if (ss[i] == 'R') {
+            // Find the first empty room from the right and assign it to the customer
             s[s.find_last_of('0')] = '1';
-        }
-        else {
+        } else {
+            // Make the specified room empty
             int b = ss[i] - '0';
             s[b] = '0';
         }
     }
+    // Output the final room assignment list
     cout << s << endl;
     return 0;
 }
 -------------------------------------------------------
-# sol 3
-#define LL long long
-#include<iostream>
-using namespace std;
-int n, a[10];
-string s;
-int main()
-{
-	cin >> n >> s;
-	for (int i = 0;i < n;i++)
-	{
-		if (s[i] == 'L')
-		{
-			for (int j = 0;j < 10;j++)
-				if (!a[j])
-				{
-					a[j] = 1;
-					break;
-				}
-		}
-		else if (s[i] == 'R')
-		{
-			for
-				(int j = 9;j >= 0;j--)
-				if (!a[j])
-				{
-					a[j] = 1;
-					break;
-				}
-		}
-		else a[s[i] - '0'] = 0;
-	}
-	for (int i = 0;i < 10;i++)
-	{
-		cout << a[i];
-	}
-}
+# Solution 3 - Using an array
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, a[10] = {0}; // Initialize an array of 10 elements with value 0
+    string s;
+    cin >> n >> s;
+    for (int i = 0; i < n; i++) {
+        if (s[i] == 'L') {
+            // Find the first empty room from the left and assign it to the customer
+            for (int j = 0; j < 10; j++) {
+                if (!a[j]) {
+                    a[j] = 1;
+                    break;
+                }
+            }
+        } else if (s[i] == 'R') {
+            // Find the first empty room from the right and assign it to the customer
+            for (int j = 9; j >= 0; j--) {
+                if (!a[j]) {
+                    a[j] = 1;
+                    break;
+                }
+            }
+        } else {
+            // Make the specified room empty
+            int b = s[i] - '0';
+            a[b] = 0;
+        }
+    }
+    // Output the final room assignment list
+    for (int i = 0; i < 10; i++) {
+        cout << a[i];
+    }
+    return 0;
+}
