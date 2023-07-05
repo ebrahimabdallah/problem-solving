@@ -40,7 +40,7 @@ LLRL1RL1
 
 ------------------------------------------------
 # Solution 1 - Using a deque
-
+```
 #include <iostream>
 #include <deque>
 
@@ -80,9 +80,10 @@ int main() {
     }
     return 0;
 }
+```
 -----------------------------------------
 # Solution 2 - Using a string
-
+```
 #include <iostream>
 using namespace std;
 
@@ -107,9 +108,10 @@ int main() {
     cout << s << endl;
     return 0;
 }
+```
 -------------------------------------------------------
 # Solution 3 - Using an array
-
+```
 #include <iostream>
 using namespace std;
 
@@ -146,3 +148,4 @@ int main() {
     }
     return 0;
 }
+```
