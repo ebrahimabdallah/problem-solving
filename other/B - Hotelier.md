@@ -30,7 +30,7 @@ It is guaranteed that there is at least one empty room when a customer arrives, 
 ) is given. Also, all the rooms are initially empty.
 
 *input
-8
+8 =>
 LLRL1RL1
 
 *output
